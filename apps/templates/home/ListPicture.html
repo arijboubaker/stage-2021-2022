@@ -1,0 +1,124 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} List {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <section class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">Information Extraction</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="{% url 'new_picture' %}">Add New!</a></li>
+                                        <li class="breadcrumb-item"><a href="{% url 'export_users_csv' %}">Export all records</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ breadcrumb ] end -->
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <!-- [ Hover-table ] start -->
+                                <div class="col-xl-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>List of Uploads</h5>
+
+                                        </div>
+                                        <div class="card-block table-border-style">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Phone</th>
+                                                        <th>Birthday Date</th>
+                                                        <th>Address</th>
+                                                        <th>Email</th>
+                                                        <th>Details</th>
+                                                        <th>Update</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                    </thead>
+                                                    {% for pic in pictures %}
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>{{ pic.first_name }}</td>
+                                                            <td>{{ pic.last_name }}</td>
+                                                            <td>{{ pic.phone }}</td>
+                                                            <td>{{ pic.birthday }}</td>
+                                                            <td>{{ pic.address }}</td>
+                                                            <td>{{ pic.email }}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-outline-success">
+                                                                    <a href="{% url 'view_picture' pic.id %}"
+                                                                       class="me-3">
+                                                                        View Record
+                                                                    </a></button>
+
+
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-outline-primary">
+                                                                    <a href="{% url 'update_picture' pic.id %}">
+                                                                        Update
+                                                                    </a>
+                                                                </button>
+
+
+                                                            </td>
+                                                            <td>
+
+                                                                <button type="button" class="btn btn-outline-danger">
+                                                                    <a href="{% url 'delete_picture' pic.id %}">
+
+                                                                        Delete
+                                                                    </a></button>
+
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- [ Hover-table ] end -->
+
+                            </div>
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

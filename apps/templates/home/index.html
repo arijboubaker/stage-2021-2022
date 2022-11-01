@@ -1,0 +1,196 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+
+                    <!-- [ breadcrumb ] end -->
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="m-4">
+                                <h2>Hello, <strong>{{ user }}!</strong></h2>
+                            </div>
+                            <div class="row">
+                                <!--[ daily sales section ] start-->
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card daily-sales">
+                                        <div class="card-block">
+                                            <h6 class="mb-4">HR Deapartment Files</h6>
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-9">
+                                                    <h3 class="f-w-300 d-flex align-items-center m-b-0"><i
+                                                            class="feather icon-users text-c-green f-30 m-r-10"></i>
+                                                        {{ HR }}</h3>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="progress m-t-30" style="height: 7px;">
+                                                <div class="progress-bar progress-c-theme" role="progressbar"
+                                                     style="width: {{ HR }}%;" aria-valuenow= {{ HR }} aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--[ daily sales section ] end-->
+                                <!--[ Monthly  sales section ] starts-->
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card Monthly-sales">
+                                        <div class="card-block">
+                                            <h6 class="mb-4">Accounting Deapartment Files</h6>
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-9">
+                                                    <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
+                                                            class="feather icon-activity text-c-red f-30 m-r-10"></i>
+                                                       {{ Acc }}</h3>
+                                                </div>
+
+                                            </div>
+                                            <div class="progress m-t-30" style="height: 7px;">
+                                                <div class="progress-bar progress-c-theme2" role="progressbar"
+                                                     style="width: {{ Acc }}%;" aria-valuenow={{ Acc }} aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--[ Monthly  sales section ] end-->
+                                <!--[ year  sales section ] starts-->
+                                <div class="col-md-12 col-xl-4">
+                                    <div class="card yearly-sales">
+                                        <div class="card-block">
+                                            <h6 class="mb-4">Marketing Department Files</h6>
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-9">
+                                                    <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
+                                                            class="feather icon-shopping-cart text-c-green f-30 m-r-10"></i>
+                                                        {{ Mkg }}</h3>
+                                                </div>
+
+                                            </div>
+                                            <div class="progress m-t-30" style="height: 7px;">
+                                                <div class="progress-bar progress-c-theme" role="progressbar"
+                                                     style="width: {{ Mkg }}%;" aria-valuenow={{ Mkg }} aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--[ year  sales section ] end-->
+                                <!--[ Recent Users ] start-->
+                                <div class="col-xl-8 col-md-6">
+                                    <div class="card Recent-Users">
+                                        <div class="card-header">
+                                            <h5>Recent Uploads</h5>
+                                        </div>
+                                        <div class="card-block px-0 py-3">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                    {% for pic in bj %}
+                                                    <tr class="unread">
+                                                        <td><img class="rounded-circle" style="width:40px;"
+                                                                 src="{{ ASSETS_ROOT }}/images/user/avatar-1.jpg"
+                                                                 alt="activity-user">
+                                                        </td>
+                                                        <td>
+                                                            <h6 class="mb-1">{{ pic.first_name }}</h6>
+                                                            <p class="m-0">Canada Services</p>
+                                                        </td>
+                                                        <td>
+                                                            <h6 class="text-muted"><i
+                                                                    class="fas fa-circle text-c-green f-10 m-r-15"></i>
+                                                               {{ pic.created_at }}</h6>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#!" class="label theme-bg text-white f-12">Approve</a>
+                                                        </td>
+                                                    </tr>
+                                                      {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--[ Recent Users ] end-->
+
+                                <!-- [ statistics year chart ] start -->
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="card card-event">
+                                        <div class="card-block">
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col">
+                                                    <h5 class="m-0">Current Weather</h5>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <label class="label theme-bg2 text-white f-14 f-w-400 float-right">36</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb">
+                                                <div class="weather pn">
+
+                                                    <h2>36° C</h2>
+                                                    <h4>Tunis</h4>
+                                                </div>
+                                            </div>
+                                            <i class="fa fa-cloud fa-4x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-block border-bottom">
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-auto">
+                                                    <i class="feather icon-clipboard f-30 text-c-green"></i>
+                                                </div>
+                                                <div class="col">
+                                                    <h3 class="f-w-300">{{ count_pic }}</h3>
+                                                    <span class="d-block text-uppercase">Total Files {{ user.username }} Has Uploaded</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-block">
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-auto">
+                                                    <i class="feather icon-upload-cloud f-30 text-c-blue"></i>
+                                                </div>
+                                                <div class="col">
+                                                    <h3 class="f-w-300">{{ count_dep }}</h3>
+                                                    <span class="d-block text-uppercase">Total Departments Files {{ user.username }} Has Uploaded</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- [ statistics year chart ] end -->
+
+
+
+                            </div>
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

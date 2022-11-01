@@ -1,0 +1,132 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Check {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">Information Extraction</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="{% url 'new_picture' %}">Add New!</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ breadcrumb ] end -->
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Check your Record</h5>
+                                        </div>
+                                        <div class="card-body">
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <form method="POST" action="{% url 'update_Fin' fin.id %}">
+                                                            {% csrf_token %}
+                                                            <label for="nature">Nature of document</label>
+                                                            <input name="nature" type="text" placeholder=""
+                                                                   class="form-control" id="nature"
+                                                                   value="{{ fin.nature }}">
+
+                                                            {% for error in form.nature.errors %}
+                                                                <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                                                            {% endfor %}
+                                                            <label for="exampleFormControlSelect1">Company Name</label>
+                                                            <input name="name" type="text" placeholder=""
+                                                                   class="form-control" id="name"
+                                                                   value="{{ fin.name }}">
+
+                                                            {% if form.name.help_text %}
+                                                                <div class="form-text">{{ form.name.help_text }}</div>
+                                                            {% endif %}
+                                                            {% for error in form.name.errors %}
+                                                                <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                                                            {% endfor %}
+
+                                                         <label for="exampleFormControlSelect1">Responsible Name</label>
+
+                                                            <input name="address" type="text" placeholder=""
+                                                                   class="form-control" id="address"
+                                                                   value="{{ fin.address }}">
+                                                            {% for error in form.address.errors %}
+                                                                <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                                                            {% endfor %}
+
+                                                            <label for="exampleFormControlSelect1">Total</label>
+                                                            <input name="total" type="text" placeholder=""
+                                                                   class="form-control" id="total"
+                                                                   value="{{ fin.total }}">
+
+                                                            {% for error in form.total.errors %}
+                                                                <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                                                            {% endfor %}
+
+
+
+                                                            <label for="exampleFormControlSelect1">Date</label>
+                                                            <input name="phone" type="text" placeholder=""
+                                                                   class="form-control" id="phone"
+                                                                   value="{{ fin.phone }}">
+
+                                                            {% for error in form.phone.errors %}
+                                                                <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                                                            {% endfor %}
+
+
+
+
+                                                            <div class="form-group">
+                                                                <label for="exampleFormControlTextarea1">Comment</label>
+                                                                <textarea class="form-control" rows="3" id="comment"
+                                                                          name="comment">{{fin.comment}}</textarea>
+                                                            </div>
+                                                            <input type="submit" value="Add your record" class="btn btn-primary" >
+
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
